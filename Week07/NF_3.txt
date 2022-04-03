@@ -1,0 +1,36 @@
+
+CREATE TABLE IF NOT EXISTS public.customer_ex_1
+(
+    "customerId" integer NOT NULL,
+    "customerName" character(25) COLLATE pg_catalog."default" NOT NULL,
+    "cityId" integer NOT NULL,
+    CONSTRAINT custumer_pkey PRIMARY KEY ("customerId"),
+    CONSTRAINT public.customer_ex_1 FOREIGN KEY(cityID) references public.city_ex_1(cityID),
+);
+
+CREATE TABLE IF NOT EXISTS public.city_ex_1
+(
+    "cityId" integer NOT NULL,
+    "cityName" character(50) COLLATE pg_catalog."default",
+    CONSTRAINT city_ex_1_pkey PRIMARY KEY ("cityId")
+);
+
+CREATE TABLE IF NOT EXISTS public.items_ex_1
+(
+    "itemId" integer NOT NULL,
+    "ItemName" character(25) COLLATE pg_catalog."default",
+    price money,
+    CONSTRAINT items_ex_1_pkey PRIMARY KEY ("itemId")
+);
+
+CREATE TABLE IF NOT EXISTS public.order_ex_1
+(
+    "orderId" integer NOT NULL,
+    date date,
+    "customerId" integer NOT NULL,
+    "itemId" integer NOT NULL,
+    quantity integer,
+    CONSTRAINT order_ex_1_pkey PRIMARY KEY ("orderId"),
+    CONSTRAINT public.order_ex_1 FOREIGN KEY(customerID) references public.customer_ex_1 (customerID),
+    CONSTRAINT public.order_ex_1 FOREIGN KEY(itemID) references public.items_ex_1 (itemID)
+);
