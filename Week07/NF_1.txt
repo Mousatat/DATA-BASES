@@ -1,0 +1,36 @@
+CREATE TABLE IF NOT EXISTS public."ex_1_NF1"
+(
+    "orderId" integer NOT NULL,
+    date date NOT NULL,
+    "customerId" integer NOT NULL,
+    "customerName" character(25) COLLATE pg_catalog."default",
+    city character(50) COLLATE pg_catalog."default",
+    "itemId" integer NOT NULL,
+    "itemName" character(50) COLLATE pg_catalog."default",
+    quantity integer DEFAULT 0,
+    price money,
+    CONSTRAINT ex_1_NF1_pkey PRIMARY KEY ("itemId")
+)
+
+
+INSERT INTO public."ex_1_NF1"(
+	"orderId", date, "customerId", "customerName", city, "itemId", "itemName", quantity, price)
+	VALUES (2301, '2011-02-23', 101, 'Martin', 'Prague', 4011, 'Racket', 6, 65.00);
+	
+INSERT INTO public."ex_1_NF1"(
+	"orderId", date, "customerId", "customerName", city, "itemId", "itemName", quantity, price)
+	VALUES (2301, '2011-02-23', 101, 'Martin', 'Prague', 9132, 'Pack-3', 8, 4.75);
+	
+INSERT INTO public."ex_1_NF1"(
+	"orderId", date, "customerId", "customerName", city, "itemId", "itemName", quantity, price)
+	VALUES (2302, '2011-02-25', 107, 'Herman', 'Madrid', 5794, 'Pack-6', 4, 5.00);
+	
+INSERT INTO public."ex_1_NF1"(
+	"orderId", date, "customerId", "customerName", city, "itemId", "itemName", quantity, price)
+	VALUES (2303, '2011-02-27', 110, 'Pedro', 'Moscow', 4011, 'Racket', 2, 65.00);
+	
+INSERT INTO public."ex_1_NF1"(
+	"orderId", date, "customerId", "customerName", city, "itemId", "itemName", quantity, price)
+	VALUES (2303, '2011-02-27', 110, 'Pedro', 'Moscow', 3141, 'Cover', 2, 10.00);
+
+
