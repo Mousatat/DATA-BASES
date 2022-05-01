@@ -1,0 +1,28 @@
+
+CREATE TABLE Item
+(
+item_id int NOT NULL PRIMARY KEY,
+plant int
+FOREIGN KEY (plant) REFERENCES Company(plant_id)
+);
+CREATE TABLE Company
+(
+company_id int NOT NULL PRIMARY KEY,
+group int,
+structured_by int,
+
+FOREIGN KEY (group) REFERENCES Group(group_id),
+FOREIGN KEY (structured_by) REFERENCES Company(company_id)
+);
+CREATE TABLE Group
+(
+group_id int NOT NULL PRIMARY KEY
+);
+CREATE TABLE Plant
+(
+plant_id int NOT NULL PRIMARY KEY,
+company int
+FOREIGN KEY (company) REFERENCES Company(company_id)
+);
+
+
